@@ -1,0 +1,213 @@
+@import "@fontsource/plus-jakarta-sans/latin-400.css";
+@import "@fontsource/plus-jakarta-sans/latin-500.css";
+@import "@fontsource/plus-jakarta-sans/latin-600.css";
+@import "@fontsource/plus-jakarta-sans/latin-700.css";
+@import "@fontsource/plus-jakarta-sans/latin-800.css";
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: var(--canvas);
+  --color-card: var(--card);
+  --color-well: var(--well);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-dash: var(--dash);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-on-accent: var(--on-accent);
+  --color-teal: var(--teal);
+  --color-danger: var(--danger);
+  --color-track: var(--track);
+}
+
+:root {
+  --canvas: #0c1022;
+  --card: #171b31;
+  --well: #101428;
+  --ink: #f5f7ff;
+  --muted: #a7aed0;
+  --line: #2c3458;
+  --dash: #5c658c;
+  --accent: #3b82f6;
+  --accent-2: #8b5cf6;
+  --on-accent: #ffffff;
+  --teal: #2ee6c7;
+  --danger: #ff6b81;
+  --track: #31395c;
+  --wave-1: #5b9dff;
+  --wave-2: #c084fc;
+  color-scheme: dark;
+}
+
+html.light {
+  --canvas: #e8edf7;
+  --card: #ffffff;
+  --well: #f3f6fb;
+  --ink: #14182c;
+  --muted: #5c6688;
+  --line: #d7deee;
+  --dash: #b7c0d8;
+  --track: #d5dced;
+  --wave-1: #2563eb;
+  --wave-2: #7c3aed;
+  color-scheme: light;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1.35rem;
+}
+
+html.light .panel {
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--ink) 5%, transparent);
+}
+
+.speed-num {
+  font-variant-numeric: tabular-nums;
+  background-image: linear-gradient(180deg, var(--wave-1), var(--wave-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.btn-convert {
+  background-image: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: var(--on-accent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--accent-2) 32%, transparent);
+  transition: filter 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.btn-convert:not(:disabled):hover {
+  filter: brightness(1.06);
+}
+
+.btn-convert:not(:disabled):active {
+  transform: scale(0.985);
+}
+
+.btn-convert:disabled {
+  opacity: 0.42;
+  box-shadow: none;
+}
+
+.btn-download {
+  color: var(--teal);
+  border: 2px solid var(--teal);
+  background: transparent;
+  transition: background 160ms ease, opacity 160ms ease;
+}
+
+.btn-download:not(:disabled):hover {
+  background: color-mix(in srgb, var(--teal) 12%, transparent);
+}
+
+.btn-download:disabled {
+  opacity: 0.38;
+}
+
+.speed-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  touch-action: none;
+  position: relative;
+  z-index: 2;
+}
+
+.speed-range:focus {
+  outline: none;
+}
+
+.speed-range:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.speed-range::-webkit-slider-runnable-track {
+  height: 6px;
+  background: transparent;
+  border: none;
+}
+
+.speed-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border-radius: 999px;
+  background: var(--on-accent);
+  border: 4px solid var(--accent-2);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent-2) 28%, transparent);
+  cursor: pointer;
+}
+
+.speed-range::-moz-range-track {
+  height: 6px;
+  background: transparent;
+  border: none;
+}
+
+.speed-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--on-accent);
+  border: 4px solid var(--accent-2);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent-2) 28%, transparent);
+  cursor: pointer;
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+
+  .btn-convert,
+  .btn-download {
+    transition: none;
+  }
+}
