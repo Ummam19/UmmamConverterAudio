@@ -26,7 +26,7 @@
   /* Dark theme: pure black surfaces */
   --canvas: #000000;
   --card: #000000;
-  --well: #080F1C;
+  --well: #000000;
   --ink: #f5f7ff;
   --muted: #a7aed0;
   --line: #002861;
@@ -39,22 +39,22 @@
   --teal: #002861;
   --danger: #002861;
   --track: #002861;
-  --wave-1: #194B83;
-  --wave-2: #2D65A2;
+  --wave-1: #002861;
+  --wave-2: #002861;
   color-scheme: dark;
 }
 
 html.light {
   --canvas: #e8edf7;
   --card: #ffffff;
-  --well: #f8fafd;
+  --well: #f3f6fb;
   --ink: #14182c;
   --muted: #5c6688;
   --line: #d7deee;
   --dash: #002861;
   --track: #002861;
-  --wave-1: #194B83;
-  --wave-2: #2D65A2;
+  --wave-1: #002861;
+  --wave-2: #002861;
   color-scheme: light;
 }
 
